@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Sugarloaf Mountain & Abergavenny - Welsh Hikes">
+
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1>Sugarloaf Mountain</h1>
+      <p class="hero-sub">Abergavenny, South Wales</p>
+    </div>
+  </header>
+
+  <div class="post-wrapper">
+    <div class="post-container">
+
+      <div class="meta">
+        <span>📍 Abergavenny</span>
+        <span>📏 10km</span>
+        <span>🥾 Moderate to difficult</span>
+        <span>⛺ Camping trip</span>
+      </div>
+
+      <img class="hero-photo" src="/images/abergavenny_view_park.jpeg" alt="Sugarloaf Mountain" />
+
+      <div class="post-body">
+        <div class="text-block">
+
+          <h2 class="section-heading">The Walk</h2>
+
+          <p>
+            In late summer, when the weather is getting colder but the sun is still shining 
+            and sun cream should still be at hand, a group of eight of us headed to Abergavenny 
+            for a camping weekend. The destination was chosen partly for the location and partly 
+            because Sugarloaf Mountain is a name you cannot ignore, it sounds like 
+            somewhere you have to visit.
+          </p>
+          <p>
+            The walk begins from a large car park overlooking rolling Welsh fields where all 
+            sorts of farm animals graze. There are glimpses of small towns with distinctive pubs on 
+            the horizon, but nothing close enough to clearly make out. There's a clear cut path through long 
+            grass leads that you straight towards the mountain, and although it does not initially 
+            look like the path is heading anywhere obvious, the mountain is so inviting that 
+            you just follow it. And it is absolutely the right way.
+          </p>
+          <p>
+            The first half of the hike switches between steep climbs, flat stretches and 
+            downward sections winding through large trees, rivers and fern. Forage, carving on trees,
+            and the sound of nature is everywhere, it is a diverse walk that keeps you interested.
+          </p>
+          <p>
+            Then comes the mountain itself. A roughly two kilometre climb upwards. When 
+            the weather is clear, each step reveals more of the surrounding valley below you. 
+            To have some fun and keep spirits high we played the alphabet game — a simple but 
+            effective way to pass the time on a long climb. The aim is to greet 
+            every person you pass on the hike using a word beginning with the next letter of 
+            the alphabet, working from A to Z as a group.
+          </p>
+          <p>
+            At the summit you are met with a large stone carved into the mountain that's brilliant 
+            for photos. The peak itself is small with steep edges dropping away on all sides, 
+            which makes for a impressive picnic spot to sit on the edge and take the view in.
+          </p>
+          <p>
+            The walk back is potentially the most magical part, winding through large trees 
+            over a soft mossy ground. It is easy to lose your way, but that is half the charm.
+          </p>
+
+        </div>
+      </div>
+
+      <img class="mid-photo" src="/images/abergavenny_foggy_mountain.jpeg" alt="Views from Sugarloaf Mountain" />
+
+      <div class="post-body">
+        <div class="text-block">
+
+          <h2 class="section-heading">The Camping</h2>
+
+          <p>
+            Pyscodlyn Farm campsite is a large open field split into two, one side for 
+            campers, one for caravanners. At the entrance sits an old stone building where 
+            the farmer and owner of the site lives. There are toilets, showers and a 
+            recreational room covering all the camping essentials. Controlled fires are allowed, 
+            and depending on your neighbours you may well make friends.
+          </p>
+          <p>
+            There is a river near the site that makes for a great short walk, although there is
+            no true path there, with some exploring and some consideration for the cows and horses
+            that eat in the nearb fields, it's easily reached. It makes a perfect spot for a BBQ
+            and watching the sun go down.
+          </p>
+
+        </div>
+
+        <div class="side-photo">
+          <img src="/images/abergavenny_sunset.jpeg" alt="Pyscodlyn campsite" />
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="route-link" href="https://www.outdooractive.com/en/route/hiking-trail/south-wales/the-sugar-loaf-from-near-abergavenny/290849219/" target="_blank">
+          View Walk Route
+        </a>
+        <a class="route-link secondary" href="https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjQn8SAlvqTAxUAAAAAHQAAAAAQCA..i&sca_esv=31d988af6d9099b2&client=safari&hs=s7O&pvq=CgsvZy8xdHg4c25xbiIPCgljYW1wc2l0ZXMQAhgD&lqi=ChVhYmVyZ2F2ZW5ueSBjYW1wc2l0ZXNI1KWxxOeAgIAIWh8QARgAIhVhYmVyZ2F2ZW5ueSBjYW1wc2l0ZXMqAggDkgEKY2FtcGdyb3VuZJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOUGFHTnRVM0JSUlJBQvoBBQizARA_&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&ftid=0x4871d7128f51b3a9:0x70110cf66b9a3886" target="_blank">
+          View Campsite
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  .hero {
+    height: 30vh;
+    min-height: 400px;
+    background-image: url("/images/abergavenny_mirror.jpeg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 50% 8%;
+    border-bottom-right-radius: 50% 8%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    padding: 40px 60px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 8px 0 0 0;
+  }
+
+  .post-wrapper {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .post-container {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  .meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 28px;
+  }
+
+  .hero-photo {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    margin-bottom: 40px;
+    object-position: center 30%;
+  }
+
+  .mid-photo {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    margin: 10px 0 40px 0;
+  }
+
+  .post-body {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+
+  .text-block {
+    flex: 1;
+  }
+
+  .section-heading {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #003366;
+    margin: 0 0 16px 0;
+  }
+
+  .text-block p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .side-photo {
+    flex: 0 0 280px;
+  }
+
+  .side-photo img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    object-fit: cover;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .route-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+
+  .route-link:hover { background-color: #00509e; }
+
+  .route-link.secondary {
+    background-color: #4a7c59;
+  }
+
+  .route-link.secondary:hover { background-color: #3a6147; }
+
+  @media (max-width: 768px) {
+    .post-body {
+      flex-direction: column;
+    }
+
+    .side-photo {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .hero h1 { font-size: 2rem; }
+    .hero-overlay { padding: 20px; }
+
+    .links {
+      flex-direction: column;
+    }
+
+    .route-link {
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Mountain Climber - Welsh Hikes">
+
+  <div id="scene">
+    <svg
+      id="svg"
+      viewBox="0 0 1200 400"
+      width="100%"
+      height="100%"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <g id="world">
+        <path id="mountain" fill="#777" stroke="#555" stroke-width="2" />
+        <g id="character-wrapper">
+          <g id="character">
+            <circle cx="0" cy="-30" r="7" />
+            <line x1="0" y1="-23" x2="0" y2="0"/>
+            <polyline id="left-arm" points="-5,-18 -12,-8 -8,2" />
+            <polyline id="right-arm" points="5,-18 12,-8 8,2" />
+            <polyline id="left-leg" points="0,0 -6,12 -8,24" />
+            <polyline id="right-leg" points="0,0 6,12 8,24" />
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div id="controls">
+    <button id="climb">CLIMB</button>
+    <div id="stats">
+      Steps: <span id="step-count">0</span> |
+      Height: <span id="height">0</span>m
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Override body margin from BaseLayout for this page */
+  :global(body) {
+    margin: 0;
+    padding: 0;
+  }
+
+  #scene {
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 80% 20%, #fff8a8 0%, #ffdd55 0%, transparent 60%),
+      linear-gradient(to bottom, #87CEEB 0%, #cfe9ff 100%);
+    position: relative;
+  }
+
+  #controls {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #climb {
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  #world {
+    transition: transform 0.15s ease-out;
+  }
+
+  #climb:hover { background: #45a049; transform: scale(1.05); }
+  #climb:active { transform: scale(0.95); }
+  #climb:focus { outline: none; }
+
+  #stats {
+    font-size: 18px;
+    color: #333;
+  }
+
+  #character circle {
+    stroke: #333;
+    stroke-width: 2;
+    fill: #ffdbac;
+  }
+
+  #character line, #character polyline {
+    stroke: #333;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  .walking #left-leg, .walking #right-leg {
+    transition: all 0.15s ease-in-out;
+  }
+</style>
+
+<script>
+  const mountain = document.getElementById("mountain");
+  const world = document.getElementById("world");
+  const climbBtn = document.getElementById("climb");
+  const characterWrapper = document.getElementById("character-wrapper");
+  const leftLeg = document.getElementById("left-leg");
+  const rightLeg = document.getElementById("right-leg");
+  const leftArm = document.getElementById("left-arm");
+  const rightArm = document.getElementById("right-arm");
+  const stepCountEl = document.getElementById("step-count");
+  const heightEl = document.getElementById("height");
+
+  let steps = 0;
+  let offsetX = 0;
+  let cameraY = 0;
+  let mountainPoints = [];
+  const STEP_SIZE = 35;
+  const CHARACTER_X = 350;
+  const CHARACTER_Y_TARGET = 280;
+  const SEGMENT_WIDTH = 40;
+  let isRightStep = true;
+  let lastY = 320;
+  const MIN_Y = -500;
+  const MAX_Y = 350;
+
+  function generateMountain() {
+    mountainPoints = [];
+    let d = "M -400 600";
+    let x = -400;
+    let y = 320;
+    lastY = y;
+
+    for (let i = 0; i < 8; i++) {
+      mountainPoints.push({ x, y });
+      d += ` L ${x} ${y}`;
+      x += SEGMENT_WIDTH;
+    }
+
+    while (x <= 2000) {
+      mountainPoints.push({ x, y });
+      d += ` L ${x} ${y}`;
+      x += SEGMENT_WIDTH;
+      let change = -2 + Math.random() * -4;
+      if (Math.random() < 0.2) change = Math.random() * 2;
+      y += change;
+      if (y < MIN_Y) y = MIN_Y + 10;
+      if (y > MAX_Y) y = MAX_Y - 10;
+      lastY = y;
+    }
+
+    d += ` L ${x} 600 L -400 600 Z`;
+    mountain.setAttribute("d", d);
+  }
+
+  function extendMountain() {
+    const lastPoint = mountainPoints[mountainPoints.length - 1];
+    let x = lastPoint.x + SEGMENT_WIDTH;
+    let y = lastY;
+
+    for (let i = 0; i < 10; i++) {
+      let change = -2 + Math.random() * -4;
+      if (Math.random() < 0.2) change = Math.random() * 2;
+      y += change;
+      if (y < MIN_Y) y = MIN_Y + 10;
+      if (y > MAX_Y) y = MAX_Y - 10;
+      mountainPoints.push({ x, y });
+      x += SEGMENT_WIDTH;
+      lastY = y;
+    }
+
+    let d = "M 0 400";
+    mountainPoints.forEach(p => { d += ` L ${p.x} ${p.y}`; });
+    d += ` L ${x} 400 L -200 400 Z`;
+    mountain.setAttribute("d", d);
+  }
+
+  function getMountainY(x) {
+    let closestIndex = 0;
+    let minDist = Math.abs(mountainPoints[0].x - x);
+
+    for (let i = 1; i < mountainPoints.length; i++) {
+      const dist = Math.abs(mountainPoints[i].x - x);
+      if (dist < minDist) { minDist = dist; closestIndex = i; }
+    }
+
+    const index = Math.min(closestIndex, mountainPoints.length - 2);
+    const p1 = mountainPoints[index];
+    const p2 = mountainPoints[index + 1];
+    if (!p1 || !p2) return 320;
+
+    const t = (x - p1.x) / (p2.x - p1.x);
+    return p1.y + (p2.y - p1.y) * t;
+  }
+
+  function updateCharacterPosition() {
+    const worldX = offsetX;
+    const worldY = getMountainY(worldX);
+    const targetCameraY = worldY - CHARACTER_Y_TARGET;
+    cameraY += (targetCameraY - cameraY) * 0.3;
+    characterWrapper.setAttribute("transform", `translate(${offsetX} ${worldY - 24})`);
+  }
+
+  function animateWalk() {
+    characterWrapper.classList.add("walking");
+    if (isRightStep) {
+      rightLeg.setAttribute("points", "0,0 8,10 10,22");
+      leftLeg.setAttribute("points", "0,0 -4,14 -6,24");
+      leftArm.setAttribute("points", "-5,-18 -8,-6 -4,4");
+      rightArm.setAttribute("points", "5,-18 8,-10 6,0");
+    } else {
+      leftLeg.setAttribute("points", "0,0 -8,10 -10,22");
+      rightLeg.setAttribute("points", "0,0 4,14 6,24");
+      rightArm.setAttribute("points", "5,-18 8,-6 4,4");
+      leftArm.setAttribute("points", "-5,-18 -8,-10 -6,0");
+    }
+  }
+
+  generateMountain();
+  offsetX = 0;
+  const startY = getMountainY(0);
+  cameraY = startY - CHARACTER_Y_TARGET;
+  world.setAttribute("transform", `translate(${CHARACTER_X - offsetX} ${-cameraY})`);
+  updateCharacterPosition();
+
+  climbBtn.onclick = () => {
+    steps++;
+    offsetX += STEP_SIZE;
+
+    if (offsetX > mountainPoints[mountainPoints.length - 30].x) {
+      extendMountain();
+    }
+
+    world.setAttribute("transform", `translate(${CHARACTER_X - offsetX} ${-cameraY})`);
+    updateCharacterPosition();
+    isRightStep = !isRightStep;
+    animateWalk();
+
+    stepCountEl.textContent = steps;
+    heightEl.textContent = Math.round(steps * 0.3);
+  };
+
+  climbBtn.addEventListener('keydown', (e) => { e.preventDefault(); });
+</script>
