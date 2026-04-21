@@ -6,12 +6,12 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
   <!-- Hero -->
   <div class="projects-hero">
-    <div class="projects-hero-inner">
-      <p class="eyebrow">Selected Work</p>
-      <h1>Projects</h1>
-      <p class="subtitle">Machine learning, software engineering, and things built out of curiosity.</p>
-    </div>
+  <div class="projects-hero-bg" style="background-image: url('/images/projects_board.jpeg')"></div>
+  <div class="projects-hero-inner">
+    <h1>Projects</h1>
+    <p class="subtitle">Machine learning, software engineering, and things built out of curiosity.</p>
   </div>
+</div>
 
   <div class="projects-wrapper">
 
@@ -21,9 +21,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <div class="featured-card">
 
         <div class="featured-image">
-          <div class="image-placeholder">
-            <span>Screenshot / Demo</span>
-          </div>
+          <img src="/images/hugging_face_screenshot.png" />
         </div>
 
         <div class="featured-content">
@@ -31,9 +29,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             <h2>Adversarial Machine Learning UI</h2>
             <p class="featured-desc">
               My Masters dissertation explored adversarial attacks on machine learning models — 
-              inputs deliberately crafted to fool a classifier. To make the research accessible, 
-              I built a clean interactive UI hosted on Hugging Face Spaces, letting anyone 
-              experiment with the concepts without needing to touch any code.
+              inputs deliberately crafted to trick a classifier. I worked on breast cancer histopathology images. 
+              To make the research accessible, I built a clean interactive UI hosted on Hugging Face Spaces, 
+              letting anyone experiment with the concepts without needing to touch any code.
             </p>
             <p class="featured-result">
               🏆 Distinction — deployed as a live Hugging Face Space
@@ -43,17 +41,15 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <div class="tech-stack">
             <span class="tag">Python</span>
             <span class="tag">PyTorch</span>
+            <span class="tag">Matplotlib</span>
             <span class="tag">Gradio</span>
             <span class="tag">Hugging Face</span>
             <span class="tag">Adversarial ML</span>
           </div>
 
           <div class="featured-links">
-            <a href="https://huggingface.co/" target="_blank" class="btn btn-primary">
+            <a href="https://huggingface.co/spaces/AlexanderGR/Adversarial-Histopathology-Cancer" target="_blank" class="btn btn-primary">
               View on Hugging Face
-            </a>
-            <a href="#" class="btn btn-secondary">
-              GitHub
             </a>
           </div>
         </div>
@@ -69,11 +65,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <!-- Masters Dissertation -->
         <div class="project-card">
           <div class="card-top">
-            <span class="card-type">Research</span>
+            <span class="card-type">Project & Research</span>
             <h3>Masters Dissertation</h3>
             <p>
-              A deep dive into adversarial robustness in neural networks. 
-              Investigated attack vectors and defence strategies across 
+              A deep dive into adversarial robustness in breast cancer histopathology. 
+              Investigated attack (FGSM, PGD, C&W) and defence strategies across 
               image classification tasks.
             </p>
           </div>
@@ -82,40 +78,46 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <span class="tag small">PyTorch</span>
               <span class="tag small">Deep Learning</span>
               <span class="tag small">Computer Vision</span>
+              <span class="tag small">CNN</span>
+              <span class="tag small">ML</span>
             </div>
-            <span class="card-badge distinction">Distinction</span>
+            <a href="https://github.com/alexrendell/MSc-Adversarial-Robustness" class="card-link">Visit Git Repository →</a>
           </div>
         </div>
 
         <!-- Bachelors Dissertation -->
         <div class="project-card">
           <div class="card-top">
-            <span class="card-type">Research</span>
+            <span class="card-type">Project & Research</span>
             <h3>Bachelors Dissertation</h3>
             <p>
-              Placeholder — add your Bachelors dissertation title and a 
-              short description of what you built or investigated here.
+              Analysing a genetic algorithms performance in a complex strategy based game.
+              Agents played over thousands of generations and millions of moves discovering strange,
+              yet interesting strategies that outperform the majority of sorting algorithms.
             </p>
           </div>
           <div class="card-bottom">
             <div class="card-tags">
-              <span class="tag small">Add</span>
-              <span class="tag small">Your</span>
-              <span class="tag small">Stack</span>
+              <span class="tag small">Optimisation</span>
+              <span class="tag small">Game Design</span>
+              <span class="tag small">Evolution</span>
+              <span class="tag small">NumPy</span>
+              <span class="tag small">Version Control</span>
             </div>
-            <span class="card-badge">First Class</span>
+            <a href="https://github.com/alexrendell/BSc-Genetic-Algorithm-Simulation-Game" class="card-link">Visit Git Repository →</a>
           </div>
         </div>
 
         <!-- Placeholder for Welsh Hikes -->
         <div class="project-card">
           <div class="card-top">
-            <span class="card-type">Web</span>
+            <span class="card-type">Web Development Project</span>
             <h3>Welsh Hikes</h3>
             <p>
               A personal blog and portfolio site built with Astro, 
-              documenting hikes across Wales and the UK alongside 
-              personal projects.
+              documenting hikes across Wales and the UK. A passion project
+              with mini projects contained within, including a clicking game buit 
+              on javascript. New updates and projexts are always on the horizon.
             </p>
           </div>
           <div class="card-bottom">
@@ -123,6 +125,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <span class="tag small">Astro</span>
               <span class="tag small">CSS</span>
               <span class="tag small">JavaScript</span>
+              <span class="tag small">UX</span>
+              <span class="tag small">UI</span>
+              <span class="tag small">Game development</span>
             </div>
             <a href="/" class="card-link">Visit Site →</a>
           </div>
@@ -138,15 +143,29 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 <style>
   /* Hero */
   .projects-hero {
-    background-color: #003366;
-    padding: 120px 20px 70px;
-    text-align: center;
-  }
+  position: relative;
+  background-color: #003366;
+  padding: 120px 20px 70px;
+  text-align: center;
+  overflow: hidden;
+}
 
-  .projects-hero-inner {
-    max-width: 700px;
-    margin: 0 auto;
-  }
+/* Swap the image url here to try different photos */
+.projects-hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center 30%; /* ← adjust this to pan the image */
+  opacity: 0.1;                   /* ← adjust this to change fade (0 = invisible, 1 = full) */
+  z-index: 0;
+}
+
+.projects-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
 
   .eyebrow {
     font-size: 0.8rem;
@@ -208,6 +227,14 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
   .featured-image {
     flex: 0 0 340px;
+    max-width: 340px;
+  }
+
+  .featured-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
   }
 
   .image-placeholder {
