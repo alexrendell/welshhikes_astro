@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Dee's Fishing Ponds - Welsh Hikes">
+
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1>Dee's Fishing Ponds</h1>
+      <p class="hero-sub">Ynysybwl, South Wales</p>
+    </div>
+  </header>
+
+  <div class="post-wrapper">
+    <div class="post-container">
+
+      <div class="meta">
+        <span>📍 Ynysybwl</span>
+        <span>🎣 Fishing Trip</span>
+        <span>💷 £7.50 entry</span>
+        <span>🐟 Carp, Roach, Perch, Tench, Bream</span>
+      </div>
+
+      <img class="hero-photo" src="/images/dees_main_lake.jpeg" alt="Dee's Fishing Ponds" />
+
+      <div class="post-body">
+        <div class="text-block">
+
+          <h2 class="section-heading">The Ponds</h2>
+
+          <p>
+            On an early summer day with the sun shining bright and showers rolling in 
+            without much warning, Dee's Fishing Ponds turned out to be the perfect place 
+            to be. Three ponds sit at the center of Dee's farm in Ynysybwl, each stocked with 
+            carp, roach, perch, tench and bream in all shapes and sizes. It's perfect for 
+            float fishing and you only need the most basic equipment to get started. There 
+            is really no barrier to entry here.
+          </p>
+          <p>
+            After calling ahead, I was told that Dee himself visits the ponds a couple of 
+            times a day to collect £7.50 from anyone with a rod in the water. A very fair 
+            price for access to such a wonderful spot. Dee explained that he built the ponds 
+            as a hobby and that the fish are his to breed and enjoy — the animals on the farm 
+            are kept simply because he loves having them around.
+          </p>
+          <p>
+            When the rain came in heavily there was no need to pack up and leave. Plenty of 
+            spots sit sheltered under large trees where you can duck in, sit down and wait it 
+            out in peace. Every so often a large splash would break the silence, you'd turn 
+            around to catch the tail end of carp and a glimpse of a tail disappearing 
+            below the surface again. It must've been one massive carp, that unfortunately we did 
+            not catch
+          </p>
+          <p>
+            In the end we caught three small roaches — not the haul we were hoping for, but 
+            as novices we would have been happy with anything. The views alone make the trip 
+            worth it, and despite what people say about fishing being a slow and quiet 
+            pursuit, this felt anything but boring.
+          </p>
+          <p>
+            To anyone who visits, be respectful of the area, take your litter home, and 
+            take a moment to enjoy it properly. It is a special little place.
+          </p>
+
+        </div>
+
+        <div class="side-photo">
+          <img src="/images/dees_tom_fish.jpeg" alt="The ponds at Dee's farm" />
+        </div>
+
+      </div>
+
+      <img class="mid-photo" src="/images/dees_horse.jpeg" alt="The farm and surroundings at Dee's" />
+
+      <div class="post-body">
+        <div class="text-block">
+
+          <h2 class="section-heading">The Farm</h2>
+
+          <p>
+            The ponds sit within Dee's farm and the place is alive in every direction. 
+            Ducks, chickens, swans, geese, horses, peacocks. And if you listen carefully, 
+            the distant knock of a woodpecker somewhere in the trees. There is never a quiet 
+            moment, just the constant sound of nature going about its business. It adds 
+            something to the experience that you simply cannot manufacture.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="route-link" href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x486e3d7b94749faf:0xda0ba7de097ba653?entry=s&sa=X&ved=2ahUKEwic36X12sWUAxVOZUEAHWW6EwgQ4kB6BAgEEAA&hl=en" target="_blank">
+          View on Google Maps
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  .hero {
+    height: 30vh;
+    min-height: 400px;
+    background-image: url("/images/dees_geese.jpeg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 50% 8%;
+    border-bottom-right-radius: 50% 8%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    padding: 40px 60px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero h1 {
+    color: white;
+    font-size: 3.5rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 8px 0 0 0;
+  }
+
+  .post-wrapper {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+
+  .post-container {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  .meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 28px;
+  }
+
+  .hero-photo {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    margin-bottom: 40px;
+  }
+
+  .mid-photo {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    margin: 10px 0 40px 0;
+  }
+
+  .post-body {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+
+  .text-block {
+    flex: 1;
+  }
+
+  .section-heading {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #003366;
+    margin: 0 0 16px 0;
+  }
+
+  .text-block p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .side-photo {
+    flex: 0 0 280px;
+  }
+
+  .side-photo img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    object-fit: cover;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .route-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+
+  .route-link:hover { background-color: #00509e; }
+
+  @media (max-width: 768px) {
+    .post-body {
+      flex-direction: column;
+    }
+
+    .side-photo {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .hero h1 { font-size: 2rem; }
+    .hero-overlay { padding: 20px; }
+    .meta { gap: 12px; }
+
+    .links {
+      flex-direction: column;
+    }
+
+    .route-link {
+      text-align: center;
+    }
+  }
+</style>
